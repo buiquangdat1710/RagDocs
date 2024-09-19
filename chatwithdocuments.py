@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 import os
 import requests
@@ -115,7 +115,6 @@ if __name__ == "__main__":
                 if data:
                     chunks = chunk_data(data, chunk_size)
                     st.write(f'Chunk size: {chunk_size}, Chunks: {len(chunks)}')
-                    print(chunks[0])
                     tokens, embeddings_cost = calculate_embedding_cost(chunks)
                     st.write(f'Embedding cost: ${embeddings_cost:.4f} USD')
                     vector_store = create_embeddings(chunks)
