@@ -14,3 +14,6 @@ numpy
 pandas
 bs4
 chromadb==0.3.29
+unstructured
+openpyxl
+networkx
