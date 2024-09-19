@@ -26,6 +26,9 @@ def load_document(file):
     elif extension == ".txt":
         from langchain_community.document_loaders import TextLoader
         loader = TextLoader(file)
+    elif extension == ".xlsx":
+        from langchain_community.document_loaders import ExcelLoader
+        loader = ExcelLoader(file)
     else:
         return None
     data = loader.load()
@@ -91,7 +94,7 @@ if __name__ == "__main__":
     st.subheader('LLM Question Answering Application 🤖')
 
     with st.sidebar:
-        uploaded_file = st.file_uploader('Choose a file:', type=['pdf', 'docx', 'csv', 'txt'])
+        uploaded_file = st.file_uploader('Choose a file:', type=['pdf', 'docx', 'csv', 'txt', 'xlsx'])
         url_input = st.text_input('Or enter a webpage URL:')
         
         chunk_size = st.number_input('Chunk size', min_value=100, max_value=2048, value=256, on_change=clear_history)
