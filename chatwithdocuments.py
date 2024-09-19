@@ -27,8 +27,8 @@ def load_document(file):
         from langchain_community.document_loaders import TextLoader
         loader = TextLoader(file)
     elif extension == ".xlsx":
-        from langchain_community.document_loaders import ExcelLoader
-        loader = ExcelLoader(file)
+        from langchain_community.document_loaders import UnstructuredExcelLoader
+        loader = UnstructuredExcelLoader(file)
     else:
         return None
     data = loader.load()
