@@ -91,12 +91,6 @@ if __name__ == "__main__":
     st.subheader('LLM Question Answering Application 🤖')
 
     with st.sidebar:
-        api_key = st.text_input('OpenAI API Key', type='password')
-        if api_key:
-            os.environ['OPENAI_API_KEY'] = api_key
-        else:
-            st.stop()
-
         uploaded_file = st.file_uploader('Choose a file:', type=['pdf', 'docx', 'csv', 'txt'])
         url_input = st.text_input('Or enter a webpage URL:')
         
@@ -115,10 +109,10 @@ if __name__ == "__main__":
                 elif url_input:
                     data = load_from_url(url_input)
                 
-                print(data)
                 if data:
                     chunks = chunk_data(data, chunk_size)
                     st.write(f'Chunk size: {chunk_size}, Chunks: {len(chunks)}')
+                    print(chunks[0])
                     tokens, embeddings_cost = calculate_embedding_cost(chunks)
                     st.write(f'Embedding cost: ${embeddings_cost:.4f} USD')
                     vector_store = create_embeddings(chunks)
