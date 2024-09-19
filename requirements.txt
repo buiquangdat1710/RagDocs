@@ -13,3 +13,4 @@ requests
 numpy
 pandas
 bs4
+chromadb
